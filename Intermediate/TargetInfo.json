@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "FPSGame",
+			"Path": "E:\\Udemy course\\Unreal Engine C++\\StealthGame\\Source\\FPSGame.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "FPSGameEditor",
+			"Path": "E:\\Udemy course\\Unreal Engine C++\\StealthGame\\Source\\FPSGameEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
