@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\FPSGame.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{4EEE03BB-8D0C-4655-8902-2CB33CD4A8A3}</UniqueIdentifier>
+      <UniqueIdentifier>{9A2AD5BE-BFA7-45EC-8778-D8AF940DB3DE}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\FPSGame.Target.cs">
       <Filter>Source</Filter>
@@ -12,9 +12,10 @@
       <Filter>Source</Filter>
     </None>
     <None Include="..\..\.gitattributes" />
+    <None Include="..\..\.gitignore" />
     <None Include="..\..\README.md" />
     <Filter Include="Config">
-      <UniqueIdentifier>{2BF6A951-C562-4A58-B96B-F3236F683701}</UniqueIdentifier>
+      <UniqueIdentifier>{7761A9D0-D313-4C0A-A211-EBBFA85398CB}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -29,7 +30,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\FPSGame">
-      <UniqueIdentifier>{A108B0FE-1AA1-43E7-92B7-1ED587F26B36}</UniqueIdentifier>
+      <UniqueIdentifier>{F35E2D00-323E-45FB-BB27-356036099337}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\FPSGame\FPSGame.Build.cs">
       <Filter>Source\FPSGame</Filter>
@@ -41,7 +42,7 @@
       <Filter>Source\FPSGame</Filter>
     </ClInclude>
     <Filter Include="Source\FPSGame\Private">
-      <UniqueIdentifier>{D5C0E6BA-DF27-4AA6-B97F-BA73AAFB6EEA}</UniqueIdentifier>
+      <UniqueIdentifier>{64AE95FC-4C3A-4C0C-A90A-670E3AB8072E}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\FPSGame\Private\FPSCharacter.cpp">
       <Filter>Source\FPSGame\Private</Filter>
@@ -52,11 +53,14 @@
     <ClCompile Include="..\..\Source\FPSGame\Private\FPSHUD.cpp">
       <Filter>Source\FPSGame\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\FPSGame\Private\FPSObjectiveActor.cpp">
+      <Filter>Source\FPSGame\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\FPSGame\Private\FPSProjectile.cpp">
       <Filter>Source\FPSGame\Private</Filter>
     </ClCompile>
     <Filter Include="Source\FPSGame\Public">
-      <UniqueIdentifier>{2330977A-CA56-4CD5-B07B-FF45EDFC3F74}</UniqueIdentifier>
+      <UniqueIdentifier>{0D156488-F5DA-4696-AC8C-AA0AC8FCB192}</UniqueIdentifier>
     </Filter>
     <ClInclude Include="..\..\Source\FPSGame\Public\FPSCharacter.h">
       <Filter>Source\FPSGame\Public</Filter>
@@ -67,8 +71,12 @@
     <ClInclude Include="..\..\Source\FPSGame\Public\FPSHUD.h">
       <Filter>Source\FPSGame\Public</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\FPSGame\Public\FPSObjectiveActor.h">
+      <Filter>Source\FPSGame\Public</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\FPSGame\Public\FPSProjectile.h">
       <Filter>Source\FPSGame\Public</Filter>
     </ClInclude>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

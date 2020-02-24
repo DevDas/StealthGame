@@ -16,6 +16,9 @@ class AFPSProjectile : public AActor
 {
 	GENERATED_BODY()
 
+    UPROPERTY(EditDefaultsOnly, Category = "FX")
+	UParticleSystem* ExplosionEffect;
+
 protected:
 
 	/** Sphere collision component */
