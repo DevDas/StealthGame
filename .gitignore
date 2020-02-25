@@ -76,3 +76,7 @@ DerivedDataCache/*
 Binaries/Win64/UE4Editor.modules
 Binaries/Win64/UE4Editor.modules
 Binaries/Win64/UE4Editor.modules
+Intermediate/ProjectFiles/FPSGame.vcxproj
+*.filters
+Intermediate/ProjectFiles/FPSGame.vcxproj.filters
+Intermediate/ProjectFiles/FPSGame.vcxproj
