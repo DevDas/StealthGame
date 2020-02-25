@@ -7,7 +7,7 @@
 #include "FPSObjectiveActor.generated.h"
 
 class USphereComponent;
-class UStaticMeshComponentl;
+class UStaticMeshComponent;
 
 UCLASS()
 class FPSGAME_API AFPSObjectiveActor : public AActor
@@ -34,8 +34,5 @@ protected:
 	UParticleSystem* PickupFX;
 
 public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
 	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
 };
