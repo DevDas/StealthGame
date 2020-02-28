@@ -2,6 +2,10 @@
 
 #include "ExtractionZone.h"
 #include "Components\BoxComponent.h"
+#include "Components/DecalComponent.h"
+#include "FPSGame\Public\FPSCharacter.h"
+#include "FPSGameMode.h"
+#include "Kismet\GameplayStatics.h"
 
 // Sets default values
 AExtractionZone::AExtractionZone()
@@ -16,6 +20,10 @@ AExtractionZone::AExtractionZone()
 	OverlapComp->SetBoxExtent(FVector(200.f)); // Change The Size
 	RootComponent = OverlapComp;
 	OverlapComp->SetHiddenInGame(false);
+
+	DecalComp = CreateDefaultSubobject<UDecalComponent>(TEXT("DecalComp"));
+	DecalComp->DecalSize = FVector(200.f,200.f,200.f);
+	DecalComp->SetupAttachment(RootComponent);
 }
 // Called when the game starts or when spawned
 void AExtractionZone::BeginPlay()
@@ -28,5 +36,19 @@ void AExtractionZone::BeginPlay()
 void AExtractionZone::HandleOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, 
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Hey It Is Working"))
+	AFPSCharacter* MyPawn = Cast<AFPSCharacter>(OtherActor);
+	if (!MyPawn) { return; }
+	
+	if (MyPawn->bIsCarryingObjective)
+	{
+		AFPSGameMode* GameMode = Cast<AFPSGameMode>(GetWorld()->GetAuthGameMode());
+		if (GameMode)
+		{
+			GameMode->CompleteMission(MyPawn);
+		}
+	}
+	else
+	{
+		UGameplayStatics::PlaySound2D(this, ObjectiveMissingSound);
+	}
 }

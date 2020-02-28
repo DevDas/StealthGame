@@ -81,3 +81,6 @@ Intermediate/ProjectFiles/FPSGame.vcxproj
 Intermediate/ProjectFiles/FPSGame.vcxproj.filters
 Intermediate/ProjectFiles/FPSGame.vcxproj
 *.vcxproj
+*.filters
+*.vcxproj
+*.vcxproj

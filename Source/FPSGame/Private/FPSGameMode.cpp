@@ -14,3 +14,14 @@ AFPSGameMode::AFPSGameMode()
 	// use our custom HUD class
 	HUDClass = AFPSHUD::StaticClass();
 }
+
+void AFPSGameMode::CompleteMission(APawn* InstigatorPawn)
+{
+	if (InstigatorPawn)
+	{
+		InstigatorPawn->DisableInput(nullptr);
+		UE_LOG(LogTemp, Warning, TEXT("Mission Completed"))
+	}
+	OnMissionCompleted(InstigatorPawn); // Just Calling It From BP to Show A Widget
+}
+
