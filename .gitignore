@@ -90,3 +90,11 @@ Intermediate/ProjectFiles/FPSGame.vcxproj.filters
 Intermediate/ProjectFiles/UE4.vcxproj.filters
 Intermediate/ProjectFiles/UE4.vcxproj
 Intermediate/ProjectFiles/FPSGame.vcxproj
+*.dll
+*.pdb
+*.dll
+*.filters
+*.vcxproj
+*.filters
+*.sln
+.vs/FPSGame/v15/.suo
