@@ -15,7 +15,7 @@ class FPSGAME_API ALaunchPad : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
+	// Sets Default values for this actor's properties
 	ALaunchPad();
 
 protected:
