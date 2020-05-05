@@ -58,7 +58,7 @@ void AFPSCharacter::Fire()
 		FActorSpawnParameters ActorSpawnParams;
 		ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
 		
-		// Setting The Instigator for FPS Projectile
+		// ***Setting The Instigator for FPS Projectile***
 		ActorSpawnParams.Instigator = this;
 
 		// spawn the projectile at the muzzle

@@ -6,6 +6,17 @@
 #include "GameFramework/Character.h"
 #include "FPSAIGuard.generated.h"
 
+// uint8 needed To Expose Blueprint Otherwise Its Not Needed
+UENUM(BlueprintType)
+enum class EAIState : uint8
+{
+	Idle,
+
+	Suspicious,
+
+	Alerted
+};
+
 UCLASS()
 class FPSGAME_API AFPSAIGuard : public ACharacter
 {
@@ -20,15 +31,47 @@ protected:
 	virtual void BeginPlay() override;
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
-	class UPawnSensingComponent* PawnSensingComp;
+		class UPawnSensingComponent* PawnSensingComp;
 
 	UFUNCTION()
-	void OnPawnSeen(APawn* SeenPawn);
+		void OnPawnSeen(APawn* SeenPawn);
 
 	UFUNCTION()
-	void OnNoiseHeard(APawn* NoiseInstigator, const FVector& Location, float Volume);
+		void OnNoiseHeard(APawn* NoiseInstigator, const FVector& Location, float Volume);
 
-public:	
+	FRotator OriginalRotation;
+
+	UFUNCTION()
+		void ResetOrientation();
+
+	FTimerHandle TimerHandle_ResetOrientation;
+
+	EAIState GuardState;
+
+	void SetGuardState(EAIState NewState);
+	
+	UFUNCTION(BlueprintImplementableEvent, Category = "AI")
+	void OnStateChanged(EAIState NewState);
+
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+protected:
+
+	// Let The Guard Go On Patrol
+	UPROPERTY(EditInstanceOnly, Category = "AI")
+	bool bPatrol;
+
+	// meta = (EditCondition = "bPatrol") Because If U Wanna Assign FirstPatrolPoint  Then bPatrol Always Need To Set True in Editor
+	UPROPERTY(EditInstanceOnly, Category = "AI", meta = (EditCondition = "bPatrol"))
+	AActor* FirstPatrolPoint;
+
+	UPROPERTY(EditInstanceOnly, Category = "AI", meta = (EditCondition = "bPatrol"))
+	AActor* SecondPatrolPoint;
+
+	// The Current point The Actor is Either Moving to or Standing At
+	AActor* CurrentPatrolPoint;
+
+	void MoveToNextPatrolPoint();
 };

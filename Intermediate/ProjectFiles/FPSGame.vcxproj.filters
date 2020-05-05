@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\FPSGame.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{9F8803C2-38B3-4D66-A8C8-ADFE11E4534B}</UniqueIdentifier>
+      <UniqueIdentifier>{C10ABDEF-A0E5-413E-8DE1-3C86DE2B0534}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\FPSGame.Target.cs">
       <Filter>Source</Filter>
@@ -15,7 +15,7 @@
     <None Include="..\..\.gitignore" />
     <None Include="..\..\README.md" />
     <Filter Include="Config">
-      <UniqueIdentifier>{47FF7B2B-C616-4B12-8079-7D0B7FB2F5AC}</UniqueIdentifier>
+      <UniqueIdentifier>{0C64F32F-6B80-479D-8D62-4051BCE633B5}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -30,7 +30,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\FPSGame">
-      <UniqueIdentifier>{1AA19C7C-1A14-409E-BC0B-F35FEB400292}</UniqueIdentifier>
+      <UniqueIdentifier>{A7FE1ADD-9EE6-4017-BFFE-C3F2C3C13250}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\FPSGame\FPSGame.Build.cs">
       <Filter>Source\FPSGame</Filter>
@@ -42,12 +42,15 @@
       <Filter>Source\FPSGame</Filter>
     </ClInclude>
     <Filter Include="Source\FPSGame\Private">
-      <UniqueIdentifier>{2F27F7D0-D7A6-4574-9689-D4396DBB6B1B}</UniqueIdentifier>
+      <UniqueIdentifier>{99252CDC-EAD3-4038-A6F0-6EAF8A688D2C}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\FPSGame\Private\BlackHole.cpp">
       <Filter>Source\FPSGame\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\FPSGame\Private\ExtractionZone.cpp">
+      <Filter>Source\FPSGame\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\FPSGame\Private\FPSAIGuard.cpp">
       <Filter>Source\FPSGame\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\FPSGame\Private\FPSCharacter.cpp">
@@ -69,12 +72,15 @@
       <Filter>Source\FPSGame\Private</Filter>
     </ClCompile>
     <Filter Include="Source\FPSGame\Public">
-      <UniqueIdentifier>{ECF10FC7-7550-49DB-B4C6-1A019E9C9A03}</UniqueIdentifier>
+      <UniqueIdentifier>{FCACFA6B-0CA5-4BA0-9980-7F6AE60C5174}</UniqueIdentifier>
     </Filter>
     <ClInclude Include="..\..\Source\FPSGame\Public\BlackHole.h">
       <Filter>Source\FPSGame\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\FPSGame\Public\ExtractionZone.h">
+      <Filter>Source\FPSGame\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\FPSGame\Public\FPSAIGuard.h">
       <Filter>Source\FPSGame\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\FPSGame\Public\FPSCharacter.h">
@@ -96,15 +102,5 @@
       <Filter>Source\FPSGame\Public</Filter>
     </ClInclude>
     <None Include="cpp.hint" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Source\FPSGame\Public\FPSAIGuard.h">
-      <Filter>Source\FPSGame\Public</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\Source\FPSGame\Private\FPSAIGuard.cpp">
-      <Filter>Source\FPSGame\Private</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

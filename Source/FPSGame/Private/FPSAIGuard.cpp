@@ -4,6 +4,11 @@
 #include "FPSAIGuard.h"
 #include "Perception/PawnSensingComponent.h"
 #include "DrawDebugHelpers.h"
+#include "TimerManager.h"
+#include "FPSGameMode.h"
+#include "Engine/World.h"
+#include "NavigationSystem.h"
+#include "Blueprint/AIBlueprintHelperLibrary.h"
 
 // Sets default values
 AFPSAIGuard::AFPSAIGuard()
@@ -12,6 +17,8 @@ AFPSAIGuard::AFPSAIGuard()
 	PrimaryActorTick.bCanEverTick = true;
 
 	PawnSensingComp = CreateDefaultSubobject<UPawnSensingComponent>(FName("PawnSensingComp"));
+
+	GuardState = EAIState::Idle;
 }
 
 // Called when the game starts or when spawned
@@ -21,6 +28,13 @@ void AFPSAIGuard::BeginPlay()
 	
 	PawnSensingComp->OnSeePawn.AddDynamic(this, &AFPSAIGuard::OnPawnSeen);
 	PawnSensingComp->OnHearNoise.AddDynamic(this, &AFPSAIGuard::OnNoiseHeard);
+
+	OriginalRotation = GetActorRotation();
+
+	if (bPatrol)
+	{
+		MoveToNextPatrolPoint();
+	}
 }
 
 void AFPSAIGuard::OnPawnSeen(APawn* SeenPawn)
@@ -28,6 +42,29 @@ void AFPSAIGuard::OnPawnSeen(APawn* SeenPawn)
 	if (!SeenPawn) return;
 
 	DrawDebugSphere(GetWorld(), SeenPawn->GetActorLocation(), 32.f, 12, FColor::Red, false, 10.f);
+
+	AFPSGameMode* GameMode = Cast<AFPSGameMode>(GetWorld()->GetAuthGameMode());
+	if (GameMode)
+	{
+		GameMode->CompleteMission(SeenPawn, false);
+	}
+
+	SetGuardState(EAIState::Alerted);
+
+	AController* Controller = GetController();
+	if (Controller)
+	{
+		Controller->StopMovement();
+	}
+}
+
+void AFPSAIGuard::SetGuardState(EAIState NewState)
+{
+	if (GuardState == NewState) return;
+
+	GuardState = NewState;
+
+	OnStateChanged(GuardState);
 }
 
 // Called every frame
@@ -35,9 +72,71 @@ void AFPSAIGuard::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	// Patrol Goal Check
+	if (CurrentPatrolPoint)
+	{
+		FVector Delta = GetActorLocation() - CurrentPatrolPoint->GetActorLocation();
+		float DistanceToGoal = Delta.Size();
+
+		// Checks if We Are Within 50 units Of Our Goal , if So Then Pick a New Patrol Point
+		if (DistanceToGoal < 50)
+		{
+			MoveToNextPatrolPoint();
+		}
+	}
 }
 
 void AFPSAIGuard::OnNoiseHeard(APawn* NoiseInstigator, const FVector& Location, float Volume)
 {
+	if (GuardState == EAIState::Alerted) return;
+
 	DrawDebugSphere(GetWorld(), Location, 32.f, 12, FColor::Blue, false, 10.f);
+
+	FVector Direction = Location - GetActorLocation();
+	Direction.Normalize();
+
+	FRotator NewLookAt =  FRotationMatrix::MakeFromX(Direction).Rotator();
+	NewLookAt.Pitch = 0.f;
+	NewLookAt.Roll = 0.f;
+	SetActorRotation(NewLookAt);
+
+	GetWorldTimerManager().ClearTimer(TimerHandle_ResetOrientation);
+	GetWorldTimerManager().SetTimer(TimerHandle_ResetOrientation, this, &AFPSAIGuard::ResetOrientation, 3.f);
+	
+	SetGuardState(EAIState::Suspicious);
+
+	AController* Controller = GetController();
+	if (Controller)
+	{
+		Controller->StopMovement();
+	}
+}
+
+void AFPSAIGuard::ResetOrientation()
+{
+	if (GuardState == EAIState::Alerted) return;
+
+	SetActorRotation(OriginalRotation);
+
+	SetGuardState(EAIState::Idle);
+
+	if (bPatrol)
+	{
+		MoveToNextPatrolPoint();
+	}
+}
+
+void AFPSAIGuard::MoveToNextPatrolPoint()
+{
+	// Assign Next Patrol Point
+	if (CurrentPatrolPoint == nullptr || CurrentPatrolPoint == SecondPatrolPoint)
+	{
+		CurrentPatrolPoint = FirstPatrolPoint;
+	}
+	else
+	{
+		CurrentPatrolPoint = SecondPatrolPoint;
+	}
+
+	UAIBlueprintHelperLibrary::SimpleMoveToActor(GetController(), CurrentPatrolPoint);
 }
