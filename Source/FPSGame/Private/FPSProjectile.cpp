@@ -4,6 +4,7 @@
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Components/SphereComponent.h"
 #include <Runtime\Engine\Classes\Kismet\GameplayStatics.h>
+#include "GameFramework/Pawn.h"
 
 AFPSProjectile::AFPSProjectile() 
 {
@@ -43,7 +44,7 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ExplosionEffect, GetActorLocation());
 
 	// Instigator Because MakeNoise() Will Find The Instigator's Component UPawnNoiseEmitterComponent*
-	MakeNoise(1.0f, Instigator); 
+	MakeNoise(1.0f, GetInstigator()); 
 
 	Destroy();
 }

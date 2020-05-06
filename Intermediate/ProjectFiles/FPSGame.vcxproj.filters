@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\FPSGame.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{C10ABDEF-A0E5-413E-8DE1-3C86DE2B0534}</UniqueIdentifier>
+      <UniqueIdentifier>{2B89903B-AA52-47CD-BDA5-598BE55F64B8}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\FPSGame.Target.cs">
       <Filter>Source</Filter>
@@ -15,7 +15,7 @@
     <None Include="..\..\.gitignore" />
     <None Include="..\..\README.md" />
     <Filter Include="Config">
-      <UniqueIdentifier>{0C64F32F-6B80-479D-8D62-4051BCE633B5}</UniqueIdentifier>
+      <UniqueIdentifier>{F324B97B-328A-4E00-AE05-6590C43D8971}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -30,7 +30,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\FPSGame">
-      <UniqueIdentifier>{A7FE1ADD-9EE6-4017-BFFE-C3F2C3C13250}</UniqueIdentifier>
+      <UniqueIdentifier>{BD1CD5D5-686B-4AD5-9AB6-48BCCEB6153C}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\FPSGame\FPSGame.Build.cs">
       <Filter>Source\FPSGame</Filter>
@@ -42,7 +42,7 @@
       <Filter>Source\FPSGame</Filter>
     </ClInclude>
     <Filter Include="Source\FPSGame\Private">
-      <UniqueIdentifier>{99252CDC-EAD3-4038-A6F0-6EAF8A688D2C}</UniqueIdentifier>
+      <UniqueIdentifier>{1229AD02-BAB4-4811-913C-E0898A8D1155}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\FPSGame\Private\BlackHole.cpp">
       <Filter>Source\FPSGame\Private</Filter>
@@ -72,7 +72,7 @@
       <Filter>Source\FPSGame\Private</Filter>
     </ClCompile>
     <Filter Include="Source\FPSGame\Public">
-      <UniqueIdentifier>{FCACFA6B-0CA5-4BA0-9980-7F6AE60C5174}</UniqueIdentifier>
+      <UniqueIdentifier>{B5BA27A7-2A85-44DC-94F4-7D2ED632C34E}</UniqueIdentifier>
     </Filter>
     <ClInclude Include="..\..\Source\FPSGame\Public\BlackHole.h">
       <Filter>Source\FPSGame\Public</Filter>
@@ -101,6 +101,5 @@
     <ClInclude Include="..\..\Source\FPSGame\Public\LaunchPad.h">
       <Filter>Source\FPSGame\Public</Filter>
     </ClInclude>
-    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>
