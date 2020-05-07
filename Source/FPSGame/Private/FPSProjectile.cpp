@@ -5,6 +5,7 @@
 #include "Components/SphereComponent.h"
 #include <Runtime\Engine\Classes\Kismet\GameplayStatics.h>
 #include "GameFramework/Pawn.h"
+//#include "UObject/ConstructorHelpers.h"
 
 AFPSProjectile::AFPSProjectile() 
 {
@@ -31,6 +32,9 @@ AFPSProjectile::AFPSProjectile()
 
 	// Die after 3 seconds by default
 	InitialLifeSpan = 3.0f;
+
+	SetReplicates(true);
+	SetReplicateMovement(true);
 }
 
 
@@ -43,8 +47,11 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 	}
 	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ExplosionEffect, GetActorLocation());
 
-	// Instigator Because MakeNoise() Will Find The Instigator's Component UPawnNoiseEmitterComponent*
-	MakeNoise(1.0f, GetInstigator()); 
+	if (GetLocalRole() == ROLE_Authority)
+	{
+		// Instigator Because MakeNoise() Will Find The Instigator's Component UPawnNoiseEmitterComponent*
+		MakeNoise(1.0f, GetInstigator()); 
+		Destroy();
+	}
 
-	Destroy();
 }

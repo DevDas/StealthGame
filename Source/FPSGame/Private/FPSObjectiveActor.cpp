@@ -43,7 +43,11 @@ void AFPSObjectiveActor::NotifyActorBeginOverlap(AActor* OtherActor)
 	AFPSCharacter* MyCharacter = Cast<AFPSCharacter>(OtherActor); // Because We Don't Know What The Actor is
 	if (MyCharacter) // if Someone Else Overlap Then
 	{
-		MyCharacter->bIsCarryingObjective = true;
+		MyCharacter->Inventory++;
+		if (MyCharacter->Inventory >= 2)
+		{
+			MyCharacter->bIsCarryingObjective = true;
+		}
 
 		Destroy();
 	}

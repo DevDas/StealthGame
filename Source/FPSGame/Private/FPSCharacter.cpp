@@ -48,7 +48,7 @@ void AFPSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
 }
 
-void AFPSCharacter::Fire()
+void AFPSCharacter::ServerFire_Implementation()
 {
 	// try and fire a projectile
 	if (ProjectileClass)
@@ -59,13 +59,23 @@ void AFPSCharacter::Fire()
 		//Set Spawn Collision Handling Override
 		FActorSpawnParameters ActorSpawnParams;
 		ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
-		
+
 		// ***Setting The Instigator for FPS Projectile***
 		ActorSpawnParams.Instigator = this;
 
 		// spawn the projectile at the muzzle
 		GetWorld()->SpawnActor<AFPSProjectile>(ProjectileClass, MuzzleLocation, MuzzleRotation, ActorSpawnParams);
 	}
+}
+
+bool AFPSCharacter::ServerFire_Validate()
+{
+	return true;
+}
+
+void AFPSCharacter::Fire()
+{
+	ServerFire();
 
 	// try and play the sound if specified
 	if (FireSound)
@@ -109,4 +119,14 @@ void AFPSCharacter::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	//MakeNoise(1.f, this, this->GetActorLocation());
+
+	// RemoteViewPitch We Will Apply On The Client Which We Are Not Controlling It Neither It Will Call Twice
+	if (!IsLocallyControlled())
+	{
+		FRotator NewRotation = CameraComponent->GetRelativeRotation();
+		NewRotation.Pitch = RemoteViewPitch * 360.f / 255.f;
+
+		// Mesh1PComponent Is The Arms
+		CameraComponent->SetRelativeRotation(NewRotation);
+	}
 }
