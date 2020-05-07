@@ -19,6 +19,8 @@ AFPSObjectiveActor::AFPSObjectiveActor()
 	SphereComp->SetCollisionResponseToAllChannels(ECR_Ignore); //Response: Projectile is Hitting it but We Will not Stop it
 	SphereComp->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap); // only Pawn Will Block and overlap
 	SphereComp->SetupAttachment(MeshComp);
+
+	SetReplicates(true);
 }
 
 // Called when the game starts or when spawned
@@ -40,15 +42,17 @@ void AFPSObjectiveActor::NotifyActorBeginOverlap(AActor* OtherActor)
 
 	PlayEffects();
 
-	AFPSCharacter* MyCharacter = Cast<AFPSCharacter>(OtherActor); // Because We Don't Know What The Actor is
-	if (MyCharacter) // if Someone Else Overlap Then
+	if (GetLocalRole() == ROLE_Authority || GetLocalRole() == ROLE_SimulatedProxy)
 	{
-		MyCharacter->Inventory++;
-		if (MyCharacter->Inventory >= 2)
+		AFPSCharacter* MyCharacter = Cast<AFPSCharacter>(OtherActor); // Because We Don't Know What The Actor is
+		if (MyCharacter) // if Someone Else Overlap Then
 		{
-			MyCharacter->bIsCarryingObjective = true;
+			MyCharacter->Inventory++;
+			if (MyCharacter->Inventory >= 2)
+			{
+				MyCharacter->bIsCarryingObjective = true;
+			}
+			Destroy();
 		}
-
-		Destroy();
 	}
 }
