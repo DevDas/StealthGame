@@ -40,8 +40,8 @@ void AExtractionZone::HandleOverlap(UPrimitiveComponent* OverlappedComponent, AA
 
 	if (MyPawn->bIsCarryingObjective)
 	{
-		AFPSGameMode* GameMode = Cast<AFPSGameMode>(GetWorld()->GetAuthGameMode());
-		if (GameMode)
+		AFPSGameMode* GameMode = Cast<AFPSGameMode>(GetWorld()->GetAuthGameMode()); // Never Called CompleteMission() On Client , Only Server
+		if (GameMode) // This Check Will Fail in Every Client As Its Game Mode
 		{
 			GameMode->CompleteMission(MyPawn, true);
 		}

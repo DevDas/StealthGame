@@ -8,6 +8,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Components/PawnNoiseEmitterComponent.h"
 #include "Components/SceneComponent.h"
+#include "Net/UnrealNetwork.h"
 
 AFPSCharacter::AFPSCharacter()
 {
@@ -129,4 +130,15 @@ void AFPSCharacter::Tick(float DeltaTime)
 		// Mesh1PComponent Is The Arms
 		CameraComponent->SetRelativeRotation(NewRotation);
 	}
+}
+
+void AFPSCharacter::GetLifetimeReplicatedProps(TArray< FLifetimeProperty >& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	DOREPLIFETIME(AFPSCharacter, bIsCarryingObjective);
+	DOREPLIFETIME(AFPSCharacter, Inventory);
+
+	// This Is Very Useful, how you Are Using This Variable
+	/*DOREPLIFETIME_CONDITION(AFPSCharacter, bIsCarryingObjective, COND_OwnerOnly);
+	DOREPLIFETIME_CONDITION(AFPSCharacter, Inventory, COND_OwnerOnly);*/
 }
