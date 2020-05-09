@@ -10,12 +10,6 @@
     <LocalDebuggerCommandArguments>"$(SolutionDir)FPSGame.uproject" -skipcompile</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugGame|arm64'">
-    <DebuggerFlavor>AppHostLocalDebugger </DebuggerFlavor>
-  </PropertyGroup>
-<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugGame|arm64'">
-	<DebuggerFlavor>AppHostLocalDebugger</DebuggerFlavor>
-</PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development|Win32'">
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
@@ -26,22 +20,10 @@
     <LocalDebuggerCommandArguments>"$(SolutionDir)FPSGame.uproject" -skipcompile</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development|arm64'">
-    <DebuggerFlavor>AppHostLocalDebugger </DebuggerFlavor>
-  </PropertyGroup>
-<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development|arm64'">
-	<DebuggerFlavor>AppHostLocalDebugger</DebuggerFlavor>
-</PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|x64'">
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|arm64'">
-    <DebuggerFlavor>AppHostLocalDebugger </DebuggerFlavor>
-  </PropertyGroup>
-<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|arm64'">
-	<DebuggerFlavor>AppHostLocalDebugger</DebuggerFlavor>
-</PropertyGroup>
 </Project>

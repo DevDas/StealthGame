@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\FPSGame.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{7C47CD44-4398-4A5F-A520-F650155711CF}</UniqueIdentifier>
+      <UniqueIdentifier>{61520DA3-D57E-4E31-9D3D-5C01EB2A2960}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\FPSGame.Target.cs">
       <Filter>Source</Filter>
@@ -15,7 +15,7 @@
     <None Include="..\..\.gitignore" />
     <None Include="..\..\README.md" />
     <Filter Include="Config">
-      <UniqueIdentifier>{17B20760-D629-4ED0-9047-99556DAFEE78}</UniqueIdentifier>
+      <UniqueIdentifier>{A8B145DF-BF4A-4A72-AB56-EEEB559E51DE}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -30,7 +30,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\FPSGame">
-      <UniqueIdentifier>{DE5B43DB-FA88-4ED4-A082-02EFE1650F05}</UniqueIdentifier>
+      <UniqueIdentifier>{4CA74C9E-B3A1-4EB2-B829-751A362B49D5}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\FPSGame\FPSGame.Build.cs">
       <Filter>Source\FPSGame</Filter>
@@ -42,7 +42,7 @@
       <Filter>Source\FPSGame</Filter>
     </ClInclude>
     <Filter Include="Source\FPSGame\Private">
-      <UniqueIdentifier>{960F13F0-A1CF-4472-81FF-ECFA56BB930A}</UniqueIdentifier>
+      <UniqueIdentifier>{30B8E90E-3BC4-49F3-9818-D6DB229177F2}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\FPSGame\Private\BlackHole.cpp">
       <Filter>Source\FPSGame\Private</Filter>
@@ -68,6 +68,9 @@
     <ClCompile Include="..\..\Source\FPSGame\Private\FPSObjectiveActor.cpp">
       <Filter>Source\FPSGame\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\FPSGame\Private\FPSPlayerController.cpp">
+      <Filter>Source\FPSGame\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\FPSGame\Private\FPSProjectile.cpp">
       <Filter>Source\FPSGame\Private</Filter>
     </ClCompile>
@@ -75,7 +78,7 @@
       <Filter>Source\FPSGame\Private</Filter>
     </ClCompile>
     <Filter Include="Source\FPSGame\Public">
-      <UniqueIdentifier>{6C5EB311-A944-44B3-8B7B-ABC161BB4B5C}</UniqueIdentifier>
+      <UniqueIdentifier>{E64A29DF-766C-4ED6-BECA-6611A0BB3DCE}</UniqueIdentifier>
     </Filter>
     <ClInclude Include="..\..\Source\FPSGame\Public\BlackHole.h">
       <Filter>Source\FPSGame\Public</Filter>
@@ -99,6 +102,9 @@
       <Filter>Source\FPSGame\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\FPSGame\Public\FPSObjectiveActor.h">
+      <Filter>Source\FPSGame\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\FPSGame\Public\FPSPlayerController.h">
       <Filter>Source\FPSGame\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\FPSGame\Public\FPSProjectile.h">

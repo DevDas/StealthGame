@@ -33,10 +33,14 @@ void AFPSGameMode::CompleteMission(APawn* InstigatorPawn, bool bMissionSuccess)
 		if (ReturnedActors.Num() > 0)
 		{
 			AActor* NewViewTarget = ReturnedActors[0];
-			APlayerController* PlayerController = Cast<APlayerController>(InstigatorPawn->GetController());
-			if (PlayerController)
+
+			for (FConstPlayerControllerIterator It = GetWorld()->GetPlayerControllerIterator(); It; It++)
 			{
-				PlayerController->SetViewTargetWithBlend(NewViewTarget, 1.f, EViewTargetBlendFunction::VTBlend_Cubic);
+				APlayerController* PlayerController = It->Get();
+				if (PlayerController)
+				{
+					PlayerController->SetViewTargetWithBlend(NewViewTarget, 1.f, EViewTargetBlendFunction::VTBlend_Cubic);
+				}
 			}
 		}
 	}
@@ -47,5 +51,5 @@ void AFPSGameMode::CompleteMission(APawn* InstigatorPawn, bool bMissionSuccess)
 		GameState->MulticastOnMissionComplete(InstigatorPawn, bMissionSuccess);
 	}
 
-	OnMissionCompleted(InstigatorPawn, bMissionSuccess); // Just Calling It From BP to Show A Widget
+	//OnMissionCompleted(InstigatorPawn, bMissionSuccess); // Just Calling It From BP to Show A Widget
 }
